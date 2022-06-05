@@ -36,6 +36,8 @@ oc get storageclasses
 
 Install 3scale operator into `3scale` namespace. (Create new namespace)
 
+export CLUSTER_WILDCARD_URL=$(oc whoami --show-console | sed -e 's/https:\/\/console\-openshift\-console.//g')
+
 Set the cluster wildcard domain in `3scale/APIManager_3scale.yaml`
 
 Example wildcard domain: `apps.cluster-8glcz.8glcz.sandbox730.opentlc.com`
