@@ -78,7 +78,9 @@ oc apply -f https://raw.githubusercontent.com/maistra/istio/maistra-2.1/samples/
 You can now verify that the bookinfo service is responding:
 
 ```
-curl -v http://istio-ingressgateway-istio-system.{cluster wildcard url}/productpage
+export CLUSTER_WILDCARD_URL=$(oc whoami --show-console | sed -e 's/https:\/\/console\-openshift\-console.//g')
+
+curl -v http://istio-ingressgateway-istio-system.${CLUSTER_WILDCARD_URL}/productpage
 ```
 
 ### Configure BookInfo 3scale Product
