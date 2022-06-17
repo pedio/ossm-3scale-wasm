@@ -117,7 +117,7 @@ Copy the `ADMIN_ACCESS_TOKEN` key of the `system-seed` secret in the `3scale` na
 Use 3scale admin access token along with the 3scale product ID from the 3scale product configuration and run the following command with values replaced:
 
 ```
-curl https://3scale-admin.{cluster wildcard url}/admin/api/services/{product id}/proxy/configs/production/latest.json?access_token={access token} | jq '.proxy_config.content.backend_authentication_value'
+curl https://3scale-admin.${CLUSTER_WILDCARD_URL}/admin/api/services/{product id}/proxy/configs/production/latest.json?access_token={access token} | jq '.proxy_config.content.backend_authentication_value'
 ```
 
 The output will be the service token. Modify the `id` and `token` of the `spec.config.services` entry in `bookinfo/ServiceMeshExtension_bookinfo.yaml`. The `id` value should be the product ID.
