@@ -143,7 +143,7 @@ You should now have an API key that you can copy and use for authorization
 Access without credentials:
 
 ```
-curl -v http://istio-ingressgateway-istio-system.{cluster wildcard url}/productpage`
+curl -v http://istio-ingressgateway-istio-system.${CLUSTER_WILDCARD_URL}/productpage`
 ```
 
 You should see an HTTP 401 response.
@@ -151,7 +151,7 @@ You should see an HTTP 401 response.
 Access with credentials (from the previous step):
 
 ```
-curl -v http://istio-ingressgateway-istio-system.{cluster wildcard url}/productpage?user_key={user key}
+curl -v http://istio-ingressgateway-istio-system.${CLUSTER_WILDCARD_URL}/productpage?user_key={user key}
 ```
 
 You should see an HTTP 200 response.
@@ -242,7 +242,7 @@ Copy the `ADMIN_ACCESS_TOKEN` key of the `system-seed` secret in the `3scale` na
 ##### Configure service
 Use 3scale admin access token along with the 3scale product ID from the 3scale product configuration and run the following command with values replaced:
 ```
-curl https://3scale-admin.{cluster wildcard url}/admin/api/services/{product id}/proxy/configs/production/latest.json?access_token={access token} | jq '.proxy_config.content.backend_authentication_value'
+curl https://3scale-admin.${CLUSTER_WILDCARD_URL}/admin/api/services/{product id}/proxy/configs/production/latest.json?access_token={access token} | jq '.proxy_config.content.backend_authentication_value'
 ```
 The output will be the service token. Modify the `id` and `token` of the `spec.config.services` entry in `bookinfo/ServiceMeshExtension_bookinfo-oidc.yaml`. The `id` value should be the product ID.
 
@@ -285,7 +285,7 @@ You should now have the `Client ID` and `Client Secret`. This is needed to test 
 ##### Verify the policy enforcement for Client Credentials flow
 Access without credentials:
 ```
-curl -v http://istio-ingressgateway-istio-system.{cluster wildcard url}/api/v1/products
+curl -v http://istio-ingressgateway-istio-system.${CLUSTER_WILDCARD_URL}/api/v1/products
 ```
 You should see an HTTP 403 response.
 
