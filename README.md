@@ -143,7 +143,7 @@ You should now have an API key that you can copy and use for authorization
 Access without credentials:
 
 ```
-curl -v http://istio-ingressgateway-istio-system.${CLUSTER_WILDCARD_URL}/productpage`
+curl -v http://istio-ingressgateway-istio-system.${CLUSTER_WILDCARD_URL}/productpage
 ```
 
 You should see an HTTP 401 response.
